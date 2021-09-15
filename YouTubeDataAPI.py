@@ -5,7 +5,7 @@ class YouTubeDataAPI:
     API_VERSION = 'v3'
     SERVICE_NAME = 'youtube'
     DEVELOPER_KEY = 'AIzaSyChnpuiesF1TN1aLmylKumzL6ahB7F6WxY'
-    MAX_RESULTS = 6
+    MAX_RESULTS = 20
 
     def __init__(self):
 

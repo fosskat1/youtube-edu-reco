@@ -1,5 +1,8 @@
 from VideoInfoHandler import VideoInfoHandler as VidHand
 from YouTubeDataAPI import YouTubeDataAPI
+from educational_metrics.repetition_score import return_video_transcripts, return_list_of_words, \
+    filter_list_of_words, make_repetition_counts_list, make_dict_count_to_id, \
+    return_topN_video_ids, return_topN_urls_from_ids
 
 YouTubeDataAPI = YouTubeDataAPI()
 quitProgram = False
@@ -29,6 +32,20 @@ while not quitProgram:
     videoStats = YouTubeDataAPI.getVideoStats(videoIdList)
     videoStatsList = YouTubeDataAPI.getVideoStatsList(videoStats)
     engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)
+    list_video_ids = [i[0] for i in engagementRankedList]
+    transcripts = return_video_transcripts(list_video_ids)
+    transcripts_words = return_list_of_words(transcripts)
+    filtered_transcripts_words = filter_list_of_words(transcripts_words)
+    repetition_standardized_list = make_repetition_counts_list(filtered_transcripts_words)
+    print(repetition_standardized_list)
+    dict_count_to_id = make_dict_count_to_id(list_video_ids,
+                                         repetition_standardized_list)
+    list_of_topN_video_ids = return_topN_video_ids(
+        repetition_standardized_list,
+                                                 dict_count_to_id)
+    topN_url_list = return_topN_urls_from_ids(list_of_topN_video_ids)
+    print(topN_url_list)
+
 
     #relatedTermsList = YouTubeDataAPI.getRelatedSearchTerms()
 

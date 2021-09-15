@@ -35,7 +35,7 @@ class VideoInfoHandler:
         with open(storeFileName + storeFileNamePart, 'w+', newline='') as file:
             writer = csv.writer(file, delimiter=',')
             count = 1
-            NUM_RANKED_ITEMS = 10
+            NUM_RANKED_ITEMS = 15
 
             for row in self.engagementRankedList:
 
