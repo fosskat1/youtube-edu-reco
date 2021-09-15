@@ -1,5 +1,5 @@
-from VideoInfoHandler import VideoInfoHandler as VidHand
-from YouTubeDataAPI import YouTubeDataAPI
+from engagement_metrics.VideoInfoHandler import VideoInfoHandler as VidHand
+from engagement_metrics.YouTubeDataAPI import YouTubeDataAPI
 from educational_metrics.repetition_score import return_video_transcripts, return_list_of_words, \
     filter_list_of_words, make_repetition_counts_list, make_dict_count_to_id, \
     return_topN_video_ids, return_topN_urls_from_ids
@@ -16,8 +16,8 @@ while not quitProgram:
         break
 
     searchRequestResult = YouTubeDataAPI.searchRequest()
-    print(type(searchRequestResult))
     YouTubeDataAPI.storeSearchRequestResult(searchTerm, searchRequestResult)
+    # Uncomment if you want to store initial (unranked) search list.
 
     """
     searchRequestResult is a Python dictionary that contains info on a MAX_RESULTS number of videos. The "items" key 
@@ -31,8 +31,11 @@ while not quitProgram:
     videoIdList = VidHand.makeVideoIdList()
     videoStats = YouTubeDataAPI.getVideoStats(videoIdList)
     videoStatsList = YouTubeDataAPI.getVideoStatsList(videoStats)
+
     engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)
+
     list_video_ids = [i[0] for i in engagementRankedList]
+
     transcripts = return_video_transcripts(list_video_ids)
     transcripts_words = return_list_of_words(transcripts)
     filtered_transcripts_words = filter_list_of_words(transcripts_words)
@@ -46,7 +49,4 @@ while not quitProgram:
     topN_url_list = return_topN_urls_from_ids(list_of_topN_video_ids)
     print(topN_url_list)
 
-
-    #relatedTermsList = YouTubeDataAPI.getRelatedSearchTerms()
-
-
+print("/n/n ### END ###")

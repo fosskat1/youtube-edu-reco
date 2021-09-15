@@ -32,7 +32,7 @@ class VideoInfoHandler:
         for word in searchTermList:
             storeFileName = storeFileName + word.capitalize()
 
-        with open(storeFileName + storeFileNamePart, 'w+', newline='') as file:
+        with open("output_files/" + storeFileName + storeFileNamePart, 'w+', newline='') as file:
             writer = csv.writer(file, delimiter=',')
             count = 1
             NUM_RANKED_ITEMS = 15
