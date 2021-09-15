@@ -22,13 +22,13 @@ print(result)
 
 # Pipe the dict-format text into a file that we can subsequently work with
 
-with open("searchResults.txt", "w+") as file:
+with open("output_files/searchResults.txt", "w+") as file:
        file.write(str(result))
 
 
 # Open the newly created text file to extract information from it
 
-with open("searchResults.txt", "r") as file:
+with open("output_files/searchResults.txt", "r") as file:
     contents = file.read()
     searchResults = ast.literal_eval(contents)
 
