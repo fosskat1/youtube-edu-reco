@@ -1,10 +1,11 @@
+from constants import Constants
 from googleapiclient.discovery import build
 
-class YouTubeDataAPI:
 
-    API_VERSION = 'v3'
-    SERVICE_NAME = 'youtube'
-    DEVELOPER_KEY = 'AIzaSyChnpuiesF1TN1aLmylKumzL6ahB7F6WxY'
+class YouTubeDataAPI:
+    API_VERSION = Constants.GOOGLE_CLOUD_API_VERSION
+    SERVICE_NAME = Constants.GOOGLE_CLOUD_SERVICE_NAME
+    DEVELOPER_KEY = Constants.GOOGLE_CLOUD_API_KEY
     MAX_RESULTS = 20
 
     def __init__(self):
@@ -24,17 +25,17 @@ class YouTubeDataAPI:
     # related topics (i.e., user doesn't need to manually supply the list of topics).
     def getRelatedSearchTerms(self):
         proceed = False
-
+        input_mode = None
         while not proceed:
-            inputMode = input("Manual or comma-separated file input [manual/file]? \n").strip().lower()
+            input_mode = input("Manual or comma-separated file input [manual/file]? \n").strip().lower()
 
-            if not inputMode in ["manual", "file"]:
+            if input_mode not in ["manual", "file"]:
                 print("Error: invalid input. Try again. ")
 
             else:
                 proceed = True
 
-        if inputMode == "manual":
+        if input_mode == "manual":
             cond = ""
 
             while not cond == "q":
@@ -46,7 +47,7 @@ class YouTubeDataAPI:
                 else:
                     self.relatedTermsList.append(relatedTerm)
 
-        if inputMode == "file":
+        if input_mode == "file":
 
             fileName = input("Name of file with related terms (include extension)? \n")
 

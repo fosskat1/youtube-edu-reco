@@ -133,7 +133,7 @@ dmypy.json
 .idea/
 
 # config file
-config.ini
+secrets.ini
 
 # Mac
 .DS_Store

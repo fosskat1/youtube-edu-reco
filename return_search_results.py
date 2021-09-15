@@ -2,7 +2,7 @@ from VideoInfoHandler import VideoInfoHandler as VidHand
 from YouTubeDataAPI import YouTubeDataAPI
 from educational_metrics.repetition_score import return_video_transcripts, return_list_of_words, \
     filter_list_of_words, make_repetition_counts_list, make_dict_count_to_id, \
-    return_topN_video_ids, return_topN_urls_from_ids
+    return_top_n_video_ids, return_top_n_urls_from_ids
 
 YouTubeDataAPI = YouTubeDataAPI()
 quitProgram = False
@@ -40,10 +40,10 @@ while not quitProgram:
     print(repetition_standardized_list)
     dict_count_to_id = make_dict_count_to_id(list_video_ids,
                                          repetition_standardized_list)
-    list_of_topN_video_ids = return_topN_video_ids(
+    list_of_topN_video_ids = return_top_n_video_ids(
         repetition_standardized_list,
                                                  dict_count_to_id)
-    topN_url_list = return_topN_urls_from_ids(list_of_topN_video_ids)
+    topN_url_list = return_top_n_urls_from_ids(list_of_topN_video_ids)
     print(topN_url_list)
 
 
