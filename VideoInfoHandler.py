@@ -27,7 +27,7 @@ class VideoInfoHandler:
         storeFileName = ""
         numResults = len(self.engagementRankedList)
         storeFileNamePart = "_ENGAGE_RANKED_MAX_RES_" + str(numResults) + ".csv"
-        searchTermList = searchTerm.lstrip().rstrip().split();
+        searchTermList = searchTerm.lstrip().rstrip().split()
 
         for word in searchTermList:
             storeFileName = storeFileName + word.capitalize()
@@ -42,7 +42,7 @@ class VideoInfoHandler:
                 if count > NUM_RANKED_ITEMS:
                     break
 
-                count +=1
+                count += 1
                 writer.writerow(row)
 
         return self.engagementRankedList

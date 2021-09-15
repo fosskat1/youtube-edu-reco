@@ -30,6 +30,6 @@ while not quitProgram:
     videoStatsList = YouTubeDataAPI.getVideoStatsList(videoStats)
     engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)
 
-    relatedTermsList = YouTubeDataAPI.getRelatedSearchTerms()
+    #relatedTermsList = YouTubeDataAPI.getRelatedSearchTerms()
 
 
