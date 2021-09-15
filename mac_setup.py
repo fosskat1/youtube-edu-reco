@@ -1,5 +1,5 @@
 # one time required for tokenization:
-# select: punkt, averaged_perceptron_tagger, maxent_ne_chunker, words
+# select: punkt, averaged_perceptron_tagger, maxent_ne_chunker, words, stopwords
 import nltk
 import ssl
 
