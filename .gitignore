@@ -132,7 +132,14 @@ dmypy.json
 # idea files
 .idea/
 
+# config file
+secrets.ini
+
 # Mac
 .DS_Store
 
+# ignore all output_files with exception of .gitkeep
 output_files/
+!output_files/.gitkeep
+
+

@@ -31,3 +31,4 @@ tqdm==4.62.2
 uritemplate==3.0.1
 urllib3==1.26.6
 youtube-transcript-api==0.4.1
+Wikipedia-API
