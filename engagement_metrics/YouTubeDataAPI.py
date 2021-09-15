@@ -77,7 +77,7 @@ class YouTubeDataAPI:
         searchTermList = searchTerm.lstrip().rstrip().split()
 
         for word in searchTermList:
-            storeFileName = storeFileName + word.capitalize()
+            storeFileName = f"{storeFileName} + {word.capitalize()}.txt"
 
         with open("output_files/" + storeFileName + storeFileNamePart + str(self.MAX_RESULTS), "w+") as file:
             file.write(str(searchRequestResult))
