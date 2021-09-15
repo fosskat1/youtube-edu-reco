@@ -2,6 +2,9 @@ from constants import Constants
 from googleapiclient.discovery import build
 
 
+# This class handles everything related to the YouTube Data API. It contains a function that prompts the user for a topic
+# that they would like to learn about and then completes a search request with the API. This class also deals with
+# retrieving video stats (e.g., likes & dislikes) to be used as our engagement metrics.
 class YouTubeDataAPI:
     API_VERSION = Constants.GOOGLE_CLOUD_API_VERSION
     SERVICE_NAME = Constants.GOOGLE_CLOUD_SERVICE_NAME
@@ -15,9 +18,9 @@ class YouTubeDataAPI:
         self.videoStats = None
         self.videoStatsTable = []
 
-    # Prompt user for topic
+    # Prompt user for topic that they want to learn about.
     def getSearchTerm(self):
-        searchTerm = self.searchTerm = input("Enter search term [q: quit]: \n")
+        searchTerm = self.searchTerm = "Learn about " + input("Enter search term [q: quit]: \n")
         return searchTerm
 
     # After receiving the initial search term, compile a list of related terms to add to the playlist.
@@ -57,6 +60,7 @@ class YouTubeDataAPI:
 
         return self.relatedTermsList
 
+    # Completes a search request with the API to return a list of videos using the supplied search term.
     def searchRequest(self):
 
         with build(serviceName=self.SERVICE_NAME, version=self.API_VERSION, developerKey=self.DEVELOPER_KEY) as service:
@@ -65,6 +69,7 @@ class YouTubeDataAPI:
             result = request.execute()
             return result
 
+    # Stores the result of the search request in a file for viewing after the program termiantes.
     def storeSearchRequestResult(self, searchTerm, searchRequestResult):
 
         storeFileName = ""
@@ -74,7 +79,7 @@ class YouTubeDataAPI:
         for word in searchTermList:
             storeFileName = storeFileName + word.capitalize()
 
-        with open(storeFileName + storeFileNamePart + str(self.MAX_RESULTS), "w+") as file:
+        with open("output_files/" + storeFileName + storeFileNamePart + str(self.MAX_RESULTS), "w+") as file:
             file.write(str(searchRequestResult))
 
     # Returns a list of videos corresponding to the search term. List contains stats on the video, like
@@ -97,8 +102,8 @@ class YouTubeDataAPI:
 
             if len(videoStatsInfo) < 5:
                 continue
-                # We want all the stats on the video. Some videos make their likes/dislikes private (I think?), so I'm opting
-                # to skip these.
+                # We want all the stats on the video. Some videos make their likes/dislikes private (I think?), so I'm
+                # opting to skip these.
 
             else:
 

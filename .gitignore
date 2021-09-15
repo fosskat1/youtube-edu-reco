@@ -137,3 +137,5 @@ secrets.ini
 
 # Mac
 .DS_Store
+
+output_files/
