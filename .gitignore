@@ -131,4 +131,9 @@ dmypy.json
 
 # idea files
 .idea/
+
+# config file
 config.ini
+
+# Mac
+.DS_Store
