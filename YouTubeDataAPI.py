@@ -19,7 +19,9 @@ class YouTubeDataAPI:
         searchTerm = self.searchTerm = input("Enter search term [q: quit]: \n")
         return searchTerm
 
-    # After receiving the initial search term, compile a list of related terms to add to the playlist
+    # After receiving the initial search term, compile a list of related terms to add to the playlist.
+    # Doesn't have full functionality yet. Need to implement method to automatically compile a list of
+    # related topics (i.e., user doesn't need to manually supply the list of topics).
     def getRelatedSearchTerms(self):
         proceed = False
 
@@ -66,7 +68,7 @@ class YouTubeDataAPI:
 
         storeFileName = ""
         storeFileNamePart = "_MAX_RES_"
-        searchTermList = searchTerm.lstrip().rstrip().split();
+        searchTermList = searchTerm.lstrip().rstrip().split()
 
         for word in searchTermList:
             storeFileName = storeFileName + word.capitalize()

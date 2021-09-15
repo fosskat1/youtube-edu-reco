@@ -1,6 +1,5 @@
 from VideoInfoHandler import VideoInfoHandler as VidHand
 from YouTubeDataAPI import YouTubeDataAPI
-import ast
 
 YouTubeDataAPI = YouTubeDataAPI()
 quitProgram = False
@@ -32,6 +31,5 @@ while not quitProgram:
     engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)
 
     relatedTermsList = YouTubeDataAPI.getRelatedSearchTerms()
-    print(relatedTermsList)
 
 
