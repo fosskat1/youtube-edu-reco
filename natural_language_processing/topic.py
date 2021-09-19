@@ -1,7 +1,7 @@
 import nltk
 
 
-def topic(sentence):
+def chunk_sentence(sentence):
     """
     Chunk Natural Language Text into noun phrases, no named entity recognition
     :param sentence: str Natural Language Text
@@ -38,7 +38,7 @@ test_sentences = ["I want to learn physics",
                   "I don't understand astro physics.",
                   "Teach me algebra"]
 for sentence in test_sentences:
-    chunked = topic(sentence)
+    chunked = chunk_sentence(sentence)
     noun_phrase = get_noun_phrase(chunked)
     print(f"{noun_phrase != ''} {sentence} --- {chunked} --- {noun_phrase}")
 
