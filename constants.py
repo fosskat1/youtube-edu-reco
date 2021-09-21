@@ -2,6 +2,7 @@ import configparser
 
 
 class Constants:
+
     __CONFIG_FILE = 'secrets.ini'
     __config = configparser.ConfigParser()
     __config.read(__CONFIG_FILE)
