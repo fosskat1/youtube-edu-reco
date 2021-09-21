@@ -67,6 +67,7 @@ class YouTubeDataAPI:
 
             request = service.search().list(q=self.searchTerm, part='snippet', type='video', maxResults=self.MAX_RESULTS)
             result = request.execute()
+
             return result
 
     # Stores the result of the search request in a file for viewing after the program termiantes.

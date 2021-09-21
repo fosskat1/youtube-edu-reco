@@ -26,13 +26,13 @@ while not quitProgram:
     of interest.
     """
 
-    VidHand = VidHand(searchRequestResult)
-    videoInfo = VidHand.makeVideoInfoList()
-    videoIdList = VidHand.makeVideoIdList()
-    videoStats = YouTubeDataAPI.getVideoStats(videoIdList)
-    videoStatsList = YouTubeDataAPI.getVideoStatsList(videoStats)
+    VidHand = VidHand(searchRequestResult)  # Perform search request with search term
+    videoInfo = VidHand.makeVideoInfoList()  # Make a list with general info on the video
+    videoIdList = VidHand.makeVideoIdList()  # From the above list make a list of video IDs to be used below
+    videoStats = YouTubeDataAPI.getVideoStats(videoIdList)  # Use the YouTube API again to obtain video stats
+    videoStatsList = YouTubeDataAPI.getVideoStatsList(videoStats)  # Turn the above result into a list
 
-    engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)
+    engagementRankedList = VidHand.makeSortedVideoStatList(videoStatsList, searchTerm)  # Rank the above list
 
     list_video_ids = [i[0] for i in engagementRankedList]
 
