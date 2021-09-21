@@ -40,7 +40,6 @@ while not quitProgram:
     transcripts_words = return_list_of_words(transcripts)
     filtered_transcripts_words = filter_list_of_words(transcripts_words)
     repetition_standardized_list = make_repetition_counts_list(filtered_transcripts_words)
-    print(repetition_standardized_list)
     dict_count_to_id = make_dict_count_to_id(list_video_ids,
                                          repetition_standardized_list)
     list_of_topN_video_ids = return_top_n_video_ids(
